@@ -1,0 +1,90 @@
+<% layout('/layouts/boilerplate') -%>
+<body>
+  <form
+    action="/listings"
+    method="post"
+    class="container needs-validation"
+    novalidate
+    enctype="multipart/form-data"
+  >
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h1>Create a new listing</h1>
+        <div class="mb-3">
+          <label for="title" class="form-label">title :</label>
+          <input
+            type="text"
+            class="form-control border border-black"
+            name="title"
+            placeholder="enter title"
+            required
+          />
+          <div class="invalid-feedback">Title should be valid</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description " class="form-label">description :</label>
+          <textarea
+            name="description"
+            id="description"
+            class="form-control border border-black"
+            required
+          ></textarea>
+          <div class="invalid-feedback">should be valid</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+
+        <div class="mb-3">
+          <label for="image" class="form-label">image upload :</label>
+          <input
+            type="file"
+            class="form-control border border-black"
+            name="image"
+            placeholder="enter image upload"
+          />
+        </div>
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">price :</label>
+            <input
+              type="number"
+              class="form-control border border-black"
+              name="price"
+              placeholder="1200"
+              required
+            />
+            <div class="invalid-feedback">should be valid</div>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="mb-3 col">
+            <label for="country" class="form-label">country :</label>
+            <input
+              type="text"
+              class="form-control border border-black"
+              name="country"
+              placeholder="India"
+              required
+            />
+            <div class="invalid-feedback">should be valid</div>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="location" class="form-label">location :</label>
+          <input
+            type="text"
+            class="form-control border border-black"
+            name="location"
+            placeholder="kollam,kerala"
+            required
+          />
+          <div class="invalid-feedback">should be valid</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <button class="btn btn-dark mb-3 add-button">add</button>
+      </div>
+    </div>
+  </form>
+</body>

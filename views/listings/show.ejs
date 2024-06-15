@@ -1,0 +1,109 @@
+<% layout('/layouts/boilerplate') -%>
+<body>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h1>Listing Details</h1>
+      <div class="card">
+        <img
+          src="<%=listing.image%>"
+          class="card-img-top show-img"
+          alt="list-image"
+        />
+        <div class="card-body">
+          <h5 class="card-title"><%=listing.title%></h5>
+          <p class="card-text">
+            <%=listing.description%> <br />
+            <%=listing.location%>
+            <br />
+            <%=listing.country%> <br />
+            &#x20B9; <%=listing.price.toLocaleString('en-IN')%>
+          </p>
+        </div>
+      </div>
+      <div class="row justify-content-md-center">
+        <div class="col-3">
+          <form action="/listings/<%=listing._id%>/edit" method="get">
+            <button class="edit-btn btn btn-dark">Edit</button>
+          </form>
+        </div>
+
+        <div class="col-3">
+          <form
+            action="/listings/<%=listing._id%>?_method=DELETE"
+            method="post"
+          >
+            <button class="delete-btn btn btn-dark">Delete</button>
+          </form>
+        </div>
+      </div>
+      <hr />
+      <div class="mt-3 mb-3">
+        <form
+          class="container needs-validation"
+          action="/listings/<%=listing._id%>/reviews"
+          method="post"
+          novalidate
+        >
+          <div class="mb-3">
+            <label for="rating" class="form-label">rating</label>
+            <fieldset class="starability-slot form-control">
+              <input
+                type="radio"
+                id="no-rate"
+                class="input-no-rate"
+                name="rating"
+                value="0"
+                checked
+                aria-label="No rating."
+              />
+              <input type="radio" id="first-rate1" name="rating" value="1" />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input type="radio" id="first-rate2" name="rating" value="2" />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input type="radio" id="first-rate3" name="rating" value="3" />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input type="radio" id="first-rate4" name="rating" value="4" />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input type="radio" id="first-rate5" name="rating" value="5" />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+          </div>
+
+          <div class="mb-3">
+            <label for="comment" class="form-label">comment</label>
+            <textarea
+              name="comment"
+              id="comment"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+          <button class="btn btn-outline-dark">Submit</button>
+        </form>
+      </div>
+      <hr />
+      <div class="row">
+        <%for(review of listing.reviews){%>
+        <div class="card col-6 review-card ms-3 mb-3" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title"><%=review.author.username%></h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">
+              <%=review.createdAt.toString().split(' ').splice(0,4)%>
+            </h6>
+            <p class="card-text"><%=review.comment%></p>
+            <p class="starability-result" data-rating="<%=review.rating%>">
+              Rated: <%=review.rating%> stars
+            </p>
+            <form
+              action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE"
+              method="post"
+            >
+              <button class="btn btn-dark">Delete</button>
+            </form>
+          </div>
+        </div>
+        <%}%>
+      </div>
+    </div>
+  </div>
+</body>

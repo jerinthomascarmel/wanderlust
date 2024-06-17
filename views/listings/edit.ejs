@@ -5,6 +5,7 @@
     method="post"
     class="container needs-validation"
     novalidate
+    enctype="multipart/form-data"
   >
     <div class="row">
       <div class="col-8 offset-2">
@@ -35,19 +36,24 @@
           <div class="invalid-feedback">should be valid</div>
           <div class="valid-feedback">Looks good!</div>
         </div>
-
+        <div class="mb-3">
+          <label for="image" class="form-label">image :</label>
+          <img src="<%=dupliImageUrl%>" alt="list-image" />
+          <div class="invalid-feedback">should be valid</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
         <div class="mb-3">
           <label for="image" class="form-label">image :</label>
           <input
-            type="text"
+            type="file"
             name="image"
-            value="<%=listing.image%>"
             class="form-control border border-black"
-            required
+            placeholder="upload image file"
           />
           <div class="invalid-feedback">should be valid</div>
           <div class="valid-feedback">Looks good!</div>
         </div>
+
         <div class="row">
           <div class="mb-3 col-md-4">
             <label for="price" class="form-label">price :</label>

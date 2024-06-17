@@ -14,7 +14,7 @@ const initDB = async () => {
 
     let listings = sampleListings.map((obj) => {
         return {
-            ...obj, image: obj.image.url, owner: '6669548434911fb4ba14fcd4'
+            ...obj,owner: '6669548434911fb4ba14fcd4'
         };
     });
 

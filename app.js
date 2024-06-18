@@ -9,7 +9,8 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const path = require('path');
 const ejsMate = require('ejs-mate');
-const session = require('express-session')
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const User = require('./model/user.js');
 const passport = require('passport');
@@ -30,8 +31,22 @@ app.use(methodOverride('_method'));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, 'public')));
 
+const dbUrl = 'mongodb+srv://jerinthomascarmel:Gu5zfQDoV12EJ9sH@cluster0.pmbprsb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 3600,
+    crypto: {
+        secret: 'squirrel'
+    }
+});
+
+store.on('error', (err) => {
+    console.log("ERROR in MONGO SESSION STORE ", err);
+})
+const secret = process.env.SESSION_SECRET;
 const sessionOptions = {
-    secret: 'supersecretkey',
+    secret,
+    store,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -40,6 +55,7 @@ const sessionOptions = {
         httpOnly: true
     }
 }
+
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -52,7 +68,7 @@ passport.deserializeUser(User.deserializeUser());
 
 main().catch(err => console.log(err));
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
+    await mongoose.connect(dbUrl);
 }
 
 

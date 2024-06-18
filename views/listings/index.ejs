@@ -1,5 +1,85 @@
 <% layout('/layouts/boilerplate.ejs') -%>
+<style>
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .filter {
+    text-align: center;
+    margin-top: 1rem;
+    margin-right: 2rem;
+    opacity: 0.7;
+  }
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  .switch-toggle {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 2px grey solid;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .filter p {
+    font-size: 0.8rem;
+  }
+</style>
 <body>
+  <div id="filters">
+    <div class="filter">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Trending</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-bed"></i></div>
+      <p>Rooms</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-city"></i></div>
+      <p>Iconic Cities</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-mountain"></i></div>
+      <p>Mountains</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-place-of-worship"></i></div>
+      <p>Castles</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-person-swimming"></i></div>
+      <p>Amazing Pools</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-campground"></i></div>
+      <p>Camping</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-cow"></i></div>
+      <p>Farms</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-regular fa-snowflake"></i></div>
+      <p>Arctic</p>
+    </div>
+    <div class="switch-toggle">
+      <div class="form-check form-switch form-check-reverse">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckReverse"
+        />
+        <label class="form-check-label" for="flexSwitchCheckReverse"
+          >Display total after taxes</label
+        >
+      </div>
+    </div>
+  </div>
   <div class="row">
     <%for(listing of listings){%>
     <a
@@ -18,6 +98,7 @@
           <h6 class="card-title"><%=listing.title%></h6>
           <p class="card-text">
             &#x20B9; <%=listing.price.toLocaleString('en-IN')%>/night
+            <i class="tax-info" style="display: none;">+ 18%GST</i>
           </p>
         </div>
       </div></a
@@ -25,3 +106,17 @@
     <%}%>
   </div>
 </body>
+<script>
+  let toggler = document.querySelector("#flexSwitchCheckReverse");
+  toggler.addEventListener("click", () => {
+    let infos = document.querySelectorAll(".tax-info");
+    console.log("clicked ");
+    for (info of infos) {
+      if (info.style.display != "none") {
+        info.style.display = "none";
+      } else {
+        info.style.display = "inline";
+      }
+    }
+  });
+</script>

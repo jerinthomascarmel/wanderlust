@@ -1,8 +1,28 @@
-<nav class="navbar navbar-expand-md bg-body-light sticky-top">
+<style>
+  .searchBtn {
+    background-color: #fe424d;
+    color: white;
+    border-radius: 25px;
+    padding: 0rem 1rem 0rem 1rem;
+  }
+  .searchBtn:hover {
+    background-color: #fe424d;
+    color: white;
+  }
+  .searchBtn i {
+    display: inline !important;
+  }
+  .searchInput {
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    border-radius: 25px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light sticky-top border-bottom">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"
-      ><i class="fa-regular fa-compass"></i
-    ></a>
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i>
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -14,6 +34,20 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2 searchInput"
+            type="search"
+            placeholder="search destinations "
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success searchBtn" type="submit">
+            Search
+          </button>
+        </form>
       </div>
 
       <div class="navbar-nav ms-auto">

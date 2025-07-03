@@ -29,6 +29,7 @@ module.exports.showListing = async (req, res, next) => {
 }
 
 module.exports.createListing = async (req, res, next) => {
+    
     let geometryResult = await geocodingClient.forwardGeocode({
         query: req.body.location,
         limit: 1
@@ -61,6 +62,7 @@ module.exports.updateListing = async (req, res, next) => {
 
     let { id } = req.params;
     let listing = req.body;
+    
     let updatedListing = await Listing.findByIdAndUpdate(id, listing);
 
     if (typeof req.file != 'undefined') {

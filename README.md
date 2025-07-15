@@ -7,16 +7,16 @@ A server‑side rendered Node.js application inspired by Airbnb, enabling users 
 
 - **Listings CRUD**  
   User are able create, read, update, and delete property listings and they can coment on the listings , can give ratings for the listing.
-  ![Wanderlust in action](./assets/demo.gif)
+  ![Wanderlust in action](./assets/editcomment.gif)
 - **Conversational Chat Bot**  
   A MULTI-AGENT system (built with `@openai/agent  sdk`) that lets you log in/out or manage listings simply by talking—no clicks required.
   Build Agents such as Login Agent, Logout Agent , Create Listing Agent , Update Listing Agent , Delete Listing Agent and one and only TRIAGE AGENT helps for routing 
   to the user needs.
-  ![Wanderlust in action](./assets/demo.gif)
+  ![Wanderlust in action](./assets/chatbot.gif)
 
 - **User Authentication**  
   Sign up, log in, log out (Passport.js + MongoDB sessions).
-  ![Wanderlust in action](./assets/demo.gif)
+  ![Wanderlust in action](./assets/auth.gif)
 
 - **Interactive Maps**  
   Each listing displays its location via Mapbox.

@@ -20,6 +20,7 @@ const LocalStrategy = require('passport-local');
 const listingRoute = require('./routes/listingRoute.js');
 const reviewRoute = require('./routes/reviewRoute.js');
 const userRoute = require('./routes/userRoute.js');
+const chatRoute = require('./routes/chatRoute.js')
 
 
 const port = 8080;
@@ -78,9 +79,12 @@ app.listen(port, () => {
 });
 
 
-app.get('/', (req, res) => {
-    res.send("this is root!");
-});
+
+app.get('/', (req, res, next) => {
+    res.render('./index.ejs');
+})
+
+
 
 app.get('/demoUser', async (req, res) => {
     let fakeUser = new User({
@@ -102,6 +106,7 @@ app.use((req, res, next) => {
 
 app.use('/listings', listingRoute);
 app.use('/listings/:id/reviews', reviewRoute);
+app.use('/chat', chatRoute);
 app.use('/', userRoute);
 
 

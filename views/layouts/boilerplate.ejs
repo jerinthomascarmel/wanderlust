@@ -43,5 +43,19 @@
       crossorigin="anonymous"
     ></script>
     <script src="/js/app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log(" page is loaded !", window.location.pathname);
+
+        window.parent.postMessage(
+          {
+            type: "redirect",
+            pageType: window.location.pathname,
+            success: true,
+          },
+          window.location.origin
+        );
+      });
+    </script>
   </body>
 </html>

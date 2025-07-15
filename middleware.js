@@ -28,6 +28,7 @@ module.exports.isOwner = async (req, res, next) => {
     return next();
 }
 
+
 module.exports.validateListing = (req, res, next) => {
     // if (!neededKeys.every((key) => key in req.body)) throw new ExpressError(400, 'send valid listing');
     let { error } = listingSchema.validate(req.body);
@@ -37,6 +38,7 @@ module.exports.validateListing = (req, res, next) => {
     }
     return next();
 }
+
 
 module.exports.validateReview = (req, res, next) => {
     let { error } = reviewSchema.validate(req.body);

@@ -98,7 +98,7 @@
           <h6 class="card-title"><%=listing.title%></h6>
           <p class="card-text">
             &#x20B9; <%=listing.price.toLocaleString('en-IN')%>/night
-            <i class="tax-info" style="display: none;">+ 18%GST</i>
+            <i class="tax-info" style="display: none">+ 18%GST</i>
           </p>
         </div>
       </div></a
@@ -110,7 +110,6 @@
   let toggler = document.querySelector("#flexSwitchCheckReverse");
   toggler.addEventListener("click", () => {
     let infos = document.querySelectorAll(".tax-info");
-    console.log("clicked ");
     for (info of infos) {
       if (info.style.display != "none") {
         info.style.display = "none";

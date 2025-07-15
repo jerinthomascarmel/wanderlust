@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI-Driven Chat + App</title>
+    <link rel="stylesheet" href="/css/chat-panel.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="chat-container">
+      <!-- Main content area with iframe -->
+      <div class="content-area">
+        <iframe
+          id="app-frame"
+          src="/listings"
+          class="w-100 h-100 border-0"
+        ></iframe>
+      </div>
+
+      <!-- Chat panel -->
+      <div id="chat-panel" class="chat-panel">
+        <!-- Chat header -->
+        <div class="chat-header">
+          <div class="d-flex align-items-center justify-content-between w-100">
+            <div class="d-flex align-items-center">
+              <div class="chat-avatar me-3">
+                <i class="fas fa-robot"></i>
+              </div>
+              <div>
+                <h6 class="mb-0">AI Assistant</h6>
+              </div>
+            </div>
+            <div class="ms-auto">
+              <button
+                class="btn btn-sm chat-close-btn d-lg-none"
+                id="chat-toggle"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages area -->
+        <div class="messages-container" id="messages-container">
+          <!-- Messages will be dynamically added here -->
+        </div>
+
+        <!-- Typing indicator -->
+        <div class="typing-indicator d-none" id="typing-indicator">
+          <div class="typing-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <small class="text-muted ms-2">AI is typing...</small>
+        </div>
+
+        <!-- Input area -->
+        <div class="chat-input-area">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="message-input"
+              placeholder="Type your message..."
+              autocomplete="off"
+            />
+            <button class="btn btn-primary" type="button" id="send-button">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile chat toggle button -->
+      <button class="btn btn-primary chat-fab d-lg-none" id="chat-fab">
+        <i class="fas fa-comments"></i>
+      </button>
+    </div>
+
+    <div class="chat-overlay d-lg-none" id="chat-overlay"></div>
+
+    <script type="module" src="/js/chat.js"></script>
+    <script type="module" src="/js/task.js"></script>
+  </body>
+</html>

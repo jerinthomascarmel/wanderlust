@@ -7,6 +7,7 @@ const multer = require("multer");
 const { storage } = require("../CloudConfig.js");
 const upload = multer({ storage });
 
+
 //index route and create route
 router.route('/')
     .get(wrapAsync(ListingController.index))

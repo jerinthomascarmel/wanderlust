@@ -3,6 +3,7 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_ACCESS_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
+const defaultImageUrl = 'https://wallup.net/wp-content/uploads/2016/03/10/318375-nature-landscape-lake-mountain-forest-wildflowers-spring-pine_trees-path-Switzerland-HDR.jpg';
 
 module.exports.index = async (req, res, next) => {
     let listings = await Listing.find();
@@ -29,14 +30,22 @@ module.exports.showListing = async (req, res, next) => {
 }
 
 module.exports.createListing = async (req, res, next) => {
-    
+
     let geometryResult = await geocodingClient.forwardGeocode({
         query: req.body.location,
         limit: 1
     }).send();
 
-    let url = req.file.path;//for image url
-    let filename = req.file.filename; //for image  filename
+
+    let url, filename;
+    if (req.file) {
+        url = req.file.path;
+        filename = req.file.filename;
+    } else {
+        url = defaultImageUrl;
+        filename = 'default.jpg';
+    }
+
     const newListing = new Listing(req.body);
     newListing.owner = req.user._id;
     newListing.image = { url, filename };
@@ -62,7 +71,7 @@ module.exports.updateListing = async (req, res, next) => {
 
     let { id } = req.params;
     let listing = req.body;
-    
+
     let updatedListing = await Listing.findByIdAndUpdate(id, listing);
 
     if (typeof req.file != 'undefined') {

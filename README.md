@@ -1,25 +1,23 @@
-# 🌍 Wanderlust
+# 🌍 Wanderlust - CONVERSATIONAL AIRBNB
 
-A server‑side rendered Node.js application inspired by Airbnb, enabling users to list, browse, and manage properties—complete with interactive Mapbox maps and an OpenAI Agents–powered chat bot for hands‑free CRUD operations.
+A server‑side rendered Node.js application inspired by Airbnb, enabling users to list, browse, and manage properties—complete with an Multi-Agentic chat bot for automatic clicks !
 
----
 
 ## 🔥 Features
+
+- **Listings CRUD**  
+  User are able create, read, update, and delete property listings and they can coment on the listings , can give ratings for the listing.
+
+- **Conversational Chat Bot**  
+  A MULTI-AGENT system (built with `@openai/agent  sdk`) that lets you log in/out or manage listings simply by talking—no clicks required.
+  Build Agents such as Login Agent, Logout Agent , Create Listing Agent , Update Listing Agent , Delete Listing Agent and one and only TRIAGE AGENT helps for routing 
+  to the user needs.
 
 - **User Authentication**  
   Sign up, log in, log out (Passport.js + MongoDB sessions).
 
-- **Listings CRUD**  
-  Create, read, update, and delete property listings.
-
 - **Interactive Maps**  
-  Each listing displays its location via Mapbox (see `map.js`).
-
-- **Conversational Chat Bot**  
-  A multi‑agent system (built with `@openai/agents`) that lets you log in/out or manage listings simply by talking—no clicks required (see `chatAgents.mjs`).
-
-- **Server‑Side Rendering**  
-  Clean EJS templates styled in the `views/` folder.
+  Each listing displays its location via Mapbox.
 
 ---
 
@@ -29,16 +27,6 @@ A server‑side rendered Node.js application inspired by Airbnb, enabling users 
 
 ---
 
-## 🛠️ Getting Started
-
-### Prerequisites
-
-- **Node.js** ≥ 20.18.1  
-- **npm**  
-- **MongoDB** (Atlas or local)  
-- **Mapbox** API token  
-- **OpenAI** API key  
-- _(Optional)_ Cloudinary account for image uploads  
 
 ### Installation
 
@@ -49,3 +37,6 @@ cd wanderlust
 
 # 2. Install dependencies
 npm install
+
+# 3.run the project 
+node app.js
